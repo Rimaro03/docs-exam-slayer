@@ -1,1 +1,0 @@
-# Documenti di design

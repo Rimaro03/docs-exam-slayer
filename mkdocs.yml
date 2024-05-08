@@ -2,3 +2,15 @@ site_name: exam slayer
 site_url: http://127.0.0.1/
 theme:
   name: material
+  features:
+    - navigation.top
+    - navigation.instant
+    - navigatio.instant.progress
+plugins:
+  - search
+  - mkdocs-nav-weight:
+      section_renamed: false
+      index_weight: -10
+      warning: true
+      reverse: false
+      headless_included: false
