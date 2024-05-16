@@ -2,6 +2,18 @@ site_name: exam slayer
 site_url: http://127.0.0.1/
 theme:
   name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
   features:
     - navigation.top
     - navigation.instant
@@ -14,3 +26,9 @@ plugins:
       warning: true
       reverse: false
       headless_included: false
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
