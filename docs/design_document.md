@@ -29,21 +29,42 @@ classDiagram
     }
 ```
 
-## Sequence diagram
+## Sequence diagrams
 ### System sequence diagram
 ``` mermaid
 sequenceDiagram
   Actor Player
-  Player->>Game: moves(direction)   
-  loop
-    Game->>Game: refresh(map)
+  Game ->> Player: asks new game or load one?
+  alt new game
+    Game ->> Game: start new game
+  else load one
+    Game --> Game: load existing saving
   end
-  alt went through a door?
-   Game->>Player: change_current_room()
+  par  
+    loop
+      Game->>Game: refresh the map
+    end
+    Player ->> Game: moves in the map
+    alt went through a door?
+      Game->>Player: change room displayed
+    end
+    Player ->> Game: shoots
+    alt hits entity & entity life = 0?
+      Game ->> Player: entity died
+    else
+      Game ->> Game: decrease entity life
+    end
+    Player ->> Game: collects item
+    alt collected heart?
+      Game ->> Player: increase life points
+    else
+      Game ->> Player: increas atk points
+    end
   end
 ```
 
-## Class diagram
+## Class diagrams
+### Main class diagram
 ``` mermaid
 classDiagram
   class Main {
@@ -62,6 +83,17 @@ classDiagram
     -windowCenteredX() int
     -windowCenteredY() int
   }
+  class Window {
+    -int width, height
+    +Window(int width, int height)
+    +update()
+    -paintComponent(Graphics g)
+    -setup()
+    +componentResized(ComponentEvent e)
+    +componentMoved(ComponentEvent e)
+    +componentShown(ComponentEvent e)
+    +componentHidden(ComponentEvent e)
+  }
   class Game {
     -static Game currentGame
     -static Level currentLevel
@@ -70,6 +102,17 @@ classDiagram
     +static Game loadNewGame() Game
     +static Level getCurrentLevel() Level
     + start()
+    + update()
+  }
+  class Level {
+    -Room currentRoom
+    -final List<Room> bossRooms
+    -final Physics physicsEngine
+    +Level(Room startRoom, List<Room> bossRooms)
+    + changeRoom(int direction)
+    + instantiateGameObject(GameObject gameObject, Vec2 position)
+    + destroyGameObject(GameObject gameObject)
+    + init()
     + update()
   }
   class Item {
@@ -83,19 +126,19 @@ classDiagram
     +abstract  use()
     +abstract  update()
   }
-  class Heart{
-    -final int health
-    +Heart(String name, int weight, String physicalPath, String invetoryPath, int health)
-    + use()
-    + update()
-  }
-  class Sword {
-    -final int damage
-    +Sword(String name, int weight, String physicalPath, String inventoryPath, int damage)
-    + use()
-    + update()
-  }
-  class Level {
+
+  Main-->Application: launches
+  Application *-- Game: instantiates and contains
+  Application --* Window: contains
+  Game *-- Item: contains many
+  Game *-- Level: instanciates and contains
+
+```
+
+### Levels class diagram
+``` mermaid
+classDiagram
+    class Level {
     -Room currentRoom
     -final List<Room> bossRooms
     -final Physics physicsEngine
@@ -189,13 +232,6 @@ classDiagram
     +toString() String
   }
 
-  Main-->Application: launches
-  Application --|> JFrame: is a
-  Application *-- Game: instantiates and contains
-  Game *-- Item: contains many
-  Heart --|> Item: is a
-  Sword --|> Item: is a
-  Game *-- Level: instanciates and contains
   Level *-- Room: contains many
   Level *-- Physics: contains
   Room *-- GameObject: contains many
@@ -203,4 +239,35 @@ classDiagram
   GameObject *-- Component: contains many
   GameObject *-- Vec2: contains
   Component *-- Vec2: contains
+```
+
+### Items class diagram
+``` mermaid
+classDiagram
+    class Item {
+    <<Abstract>>
+    -String name
+    -int weight
+    -String physicalPath
+    -String inventoryPath
+    -BufferedImage inventoryImage
+    +Item(String name, int weight, String physicalPath, \nString inventoryPath)
+    +abstract  use()
+    +abstract  update()
+  }
+  class Heart{
+    -final int health
+    +Heart(String name, int weight, String physicalPath, \nString invetoryPath, int health)
+    + use()
+    + update()
+  }
+  class Sword {
+    -final int damage
+    +Sword(String name, int weight, String physicalPath, \nString inventoryPath, int damage)
+    + use()
+    + update()
+  }
+
+  Heart --|> Item: is a
+  Sword --|> Item: is a
 ```
