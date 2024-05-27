@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.22">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.732c4fb1.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -304,20 +304,68 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequence-diagram" class="md-nav__link">
+  <a href="#sequence-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
-      Sequence diagram
+      Sequence diagrams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequence diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-sequence-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      System sequence diagram
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#class-diagram" class="md-nav__link">
+  <a href="#class-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
-      Class diagram
+      Class diagrams
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Class diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-class-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main class diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#levels-class-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Levels class diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#items-class-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Items class diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -369,26 +417,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../manuale/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Project manual
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -425,20 +453,68 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sequence-diagram" class="md-nav__link">
+  <a href="#sequence-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
-      Sequence diagram
+      Sequence diagrams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequence diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-sequence-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      System sequence diagram
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#class-diagram" class="md-nav__link">
+  <a href="#class-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
-      Class diagram
+      Class diagrams
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Class diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-class-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main class diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#levels-class-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Levels class diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#items-class-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Items class diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -478,44 +554,237 @@
         stats
         inventory
     }</code></pre>
-<h2 id="sequence-diagram">Sequence diagram</h2>
+<h2 id="sequence-diagrams">Sequence diagrams</h2>
+<h3 id="system-sequence-diagram">System sequence diagram</h3>
 <pre class="mermaid"><code>sequenceDiagram
-  autonumber
-  Alice-&gt;&gt;John: Hello John, how are you?
-  loop Healthcheck
-      John-&gt;&gt;John: Fight against hypochondria
+  Actor Player
+  Game -&gt;&gt; Player: asks new game or load one?
+  alt new game
+    Game -&gt;&gt; Game: start new game
+  else load one
+    Game --&gt; Game: load existing saving
   end
-  Note right of John: Rational thoughts!
-  John--&gt;&gt;Alice: Great!
-  John-&gt;&gt;Bob: How about you?
-  Bob--&gt;&gt;John: Jolly good!</code></pre>
-<h2 id="class-diagram">Class diagram</h2>
+  par  
+    loop
+      Game-&gt;&gt;Game: refresh the map
+    end
+    Player -&gt;&gt; Game: moves in the map
+    alt went through a door?
+      Game-&gt;&gt;Player: change room displayed
+    end
+    Player -&gt;&gt; Game: shoots
+    alt hits entity &amp; entity life = 0?
+      Game -&gt;&gt; Player: entity died
+    else
+      Game -&gt;&gt; Game: decrease entity life
+    end
+    Player -&gt;&gt; Game: collects item
+    alt collected heart?
+      Game -&gt;&gt; Player: increase life points
+    else
+      Game -&gt;&gt; Player: increas atk points
+    end
+  end</code></pre>
+<h2 id="class-diagrams">Class diagrams</h2>
+<h3 id="main-class-diagram">Main class diagram</h3>
 <pre class="mermaid"><code>classDiagram
-  Person &lt;|-- Student
-  Person &lt;|-- Professor
-  Person : +String name
-  Person : +String phoneNumber
-  Person : +String emailAddress
-  Person: +purchaseParkingPass()
-  Address "1" &lt;-- "0..1" Person:lives at
-  class Student{
-    +int studentNumber
-    +int averageMark
-    +isEligibleToEnrol()
-    +getSeminarsTaken()
+  class Main {
+    +static  main(String[])
   }
-  class Professor{
-    +int salary
+  class Application {
+    -static Application instance
+    -Window window
+    -Application()
+    +static getWindow() Window
+    +static  init()
+    +static  run()
+    - initInternal()
+    - runInternal()
+    - setup()
+    -windowCenteredX() int
+    -windowCenteredY() int
   }
-  class Address{
-    +String street
-    +String city
-    +String state
-    +int postalCode
-    +String country
-    -validate()
-    +outputAsLabel()  
-  }</code></pre>
+  class Window {
+    -int width, height
+    +Window(int width, int height)
+    +update()
+    -paintComponent(Graphics g)
+    -setup()
+    +componentResized(ComponentEvent e)
+    +componentMoved(ComponentEvent e)
+    +componentShown(ComponentEvent e)
+    +componentHidden(ComponentEvent e)
+  }
+  class Game {
+    -static Game currentGame
+    -static Level currentLevel
+    +static final ArrayList&lt;Item&gt; allitems
+    -game()
+    +static Game loadNewGame() Game
+    +static Level getCurrentLevel() Level
+    + start()
+    + update()
+  }
+  class Level {
+    -Room currentRoom
+    -final List&lt;Room&gt; bossRooms
+    -final Physics physicsEngine
+    +Level(Room startRoom, List&lt;Room&gt; bossRooms)
+    + changeRoom(int direction)
+    + instantiateGameObject(GameObject gameObject, Vec2 position)
+    + destroyGameObject(GameObject gameObject)
+    + init()
+    + update()
+  }
+  class Item {
+    &lt;&lt;Abstract&gt;&gt;
+    -String name
+    -int weight
+    -String physicalPath
+    -String inventoryPath
+    -BufferedImage inventoryImage
+    +Item(String name, int weight, String physicalPath, String inventoryPath)
+    +abstract  use()
+    +abstract  update()
+  }
+
+  Main--&gt;Application: launches
+  Application *-- Game: instantiates and contains
+  Application --* Window: contains
+  Game *-- Item: contains many
+  Game *-- Level: instanciates and contains
+</code></pre>
+<h3 id="levels-class-diagram">Levels class diagram</h3>
+<pre class="mermaid"><code>classDiagram
+    class Level {
+    -Room currentRoom
+    -final List&lt;Room&gt; bossRooms
+    -final Physics physicsEngine
+    +Level(Room startRoom, List&lt;Room&gt; bossRooms)
+    + changeRoom(int direction)
+    + instantiateGameObject(GameObject gameObject, Vec2 position)
+    + destroyGameObject(GameObject gameObject)
+    + init()
+    + update()
+  }
+  class Room{
+    +static final float SIZE
+    -final ArrayList&lt;GameObject&gt; gameObjects
+    -final Room[] adjacentRooms
+    -boolean initialized
+    -InitType initType
+    -final int x, y
+    +Room(int x, int y)
+    +setAdjacentRoom(int direction, Room room)
+    +getAdjacentRoom(int direction) Room
+    +getGameObject(String name) GameObject
+    +addGameObject(GameObject gameObject)
+    +removeGameObject(GameObject gameObject)
+    +setEnabled(boolean enabled)
+    +init()
+    +updateGameObjects()
+    +toString() String
+  }
+  class Physics {
+    -final ArrayList&lt;Collider&gt; colliders
+    +Physics()
+    +addCollider(Collider collider)
+    +removeCollider(Collider collider)
+    +update()
+  }
+  class GameObject {
+    -String name
+    -ArrayList&lt;Component&gt; components
+    -Vec2 position
+    -boolean enabled
+    +GameObject(String name)
+    +GameObject(String name, Vec2 position)
+    +setEnabled(boolean enabled)
+    +addComponent(Component component)
+    +removeComponent(Component component)
+    +getComponent(Class&lt;? extends Component&gt; clazz) Component
+    +start()
+    +update()
+    +destroy()
+    +toString() String
+  }
+  class Collider {
+    -boolean movable
+    -ArrayList&lt;Collider&gt; ignoreColliders
+    +Collider(GameObject gameObject, boolean enabled, boolean movable)
+    +Collider(GameObject gameObject, boolean movable)
+    +abstract collidesWith(Collider other) boolean
+    +abstract onCollide(Collider other)
+  }
+  class Component {
+    -String name
+    -ArrayList&lt;Component&gt; components
+    -Vec2 position
+    -boolean enabled
+    +GameObject(String name)
+    +GameObject(String name, Vec2 position)
+    +setEnabled(boolean enabled)
+    +addComponent(Component component)
+    +removeComponent(Component component)
+    +getComponent(Class&lt;? extends Component&gt; clazz) Component
+    +start()
+    +update()
+    +destroy()
+    +toString() String
+  }
+  class Vec2 {
+    -float x
+    -float y
+    +Vec2(float x, float y)
+    +add(Vec2 other) Vec2
+    +subtract(Vec2 other) Vec2
+    +multiply(float scalar) Vec2
+    +divide(float scalar) Vec2
+    +dot(Vec2 other) float
+    +magnitude() float
+    +normalized() Vec2
+    +distance(Vec2 other) float
+    +copy() Vec2
+    +equals(Object o) boolean
+    +clamp(Vec2 value, Vec2 min, Vec2 max) Vec2
+    +toString() String
+  }
+
+  Level *-- Room: contains many
+  Level *-- Physics: contains
+  Room *-- GameObject: contains many
+  Physics *-- Collider: contains many
+  GameObject *-- Component: contains many
+  GameObject *-- Vec2: contains
+  Component *-- Vec2: contains</code></pre>
+<h3 id="items-class-diagram">Items class diagram</h3>
+<pre class="mermaid"><code>classDiagram
+    class Item {
+    &lt;&lt;Abstract&gt;&gt;
+    -String name
+    -int weight
+    -String physicalPath
+    -String inventoryPath
+    -BufferedImage inventoryImage
+    +Item(String name, int weight, String physicalPath, \nString inventoryPath)
+    +abstract  use()
+    +abstract  update()
+  }
+  class Heart{
+    -final int health
+    +Heart(String name, int weight, String physicalPath, \nString invetoryPath, int health)
+    + use()
+    + update()
+  }
+  class Sword {
+    -final int damage
+    +Sword(String name, int weight, String physicalPath, \nString inventoryPath, int damage)
+    + use()
+    + update()
+  }
+
+  Heart --|&gt; Item: is a
+  Sword --|&gt; Item: is a</code></pre>
 
 
 
@@ -574,7 +843,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.instant", "navigatio.instant.progress"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../assets/javascripts/bundle.5cfa9459.min.js"></script>
       
     
   </body>
