@@ -63,6 +63,9 @@ sequenceDiagram
   end
 ```
 
+### Internal sequence diagrams
+#### First diagram
+
 ## Class diagrams
 ### Main class diagram
 ``` mermaid
