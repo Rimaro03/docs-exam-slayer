@@ -1,73 +1,6 @@
----
-title: Design document
-summary: Composed by Domain model, system sequence diagram
-weight: -8
----
+# Class diagrams
 
-# Design document
-
-## Domain model
-``` mermaid
-classDiagram
-    player --> room: moves between
-    player --> item: interact with
-    player --> fixed_item: interact with
-    player --> entity: interact with
-    player --> save_load: use
-    player --> win: views
-    save_load --> game: save/loads
-    game --> win: notifies
-    game --> map: has
-    map --> room: contains
-    map --> entity: contains
-    map --> item: contains
-    map --> fixed_item: contains
-
-    class player {
-        stats
-        inventory
-    }
-```
-
-## Sequence diagrams
-### System sequence diagram
-``` mermaid
-sequenceDiagram
-  Actor Player
-  Game ->> Player: asks new game or load one?
-  alt new game
-    Game ->> Game: start new game
-  else load one
-    Game --> Game: load existing saving
-  end
-  par  
-    loop
-      Game->>Game: refresh the map
-    end
-    Player ->> Game: moves in the map
-    alt went through a door?
-      Game->>Player: change room displayed
-    end
-    Player ->> Game: shoots
-    alt hits entity & entity life = 0?
-      Game ->> Player: entity died
-    else
-      Game ->> Game: decrease entity life
-    end
-    Player ->> Game: collects item
-    alt collected heart?
-      Game ->> Player: increase life points
-    else
-      Game ->> Player: increas atk points
-    end
-  end
-```
-
-### Internal sequence diagrams
-#### First diagram
-
-## Class diagrams
-### Main class diagram
+## Main class diagram
 ``` mermaid
 classDiagram
   class Main {
@@ -138,7 +71,7 @@ classDiagram
 
 ```
 
-### Levels class diagram
+## Levels class diagram
 ``` mermaid
 classDiagram
     class Level {
@@ -244,7 +177,7 @@ classDiagram
   Component *-- Vec2: contains
 ```
 
-### Items class diagram
+## Items class diagram
 ``` mermaid
 classDiagram
     class Item {

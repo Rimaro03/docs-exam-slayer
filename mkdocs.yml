@@ -18,8 +18,7 @@ theme:
     - navigation.top
     - navigation.instant
     - navigation.instant.progress
-    - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.sections
 plugins:
   - search
   - mkdocs-nav-weight:
@@ -37,8 +36,11 @@ markdown_extensions:
 
 nav:
   - Project manual: index.md
-  - Design:
-    - Domain model: design/design.md
-  - System test: system_test.md
-  - Unit test: unit_test.md
+  - Design documentation:
+    - Domain model: design/domain_model.md
+    - Sequence diagrams: design/sequence_diagrams.md
+    - Class diagrams: design/class_diagrams.md
+  - Testing:
+    - System test: system_test.md
+    - Unit test: unit_test.md
   

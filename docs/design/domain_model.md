@@ -1,6 +1,5 @@
-# Design document
+# Domain model
 
-## Domain model
 ``` mermaid
 classDiagram
     player --> room: moves between
