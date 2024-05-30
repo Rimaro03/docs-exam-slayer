@@ -46,5 +46,7 @@ For a more detailed explenation, refer to [this video](https://www.youtube.com/w
 
 ## Colliders
 
-## Notes
+## Controllers
+
+## Final notes
 - __Class Diagram__<br/> The class diagram has been divided into three parts (main, level, items) so that its easier to read it. Keeping it united would have resulted in a too small diagram.
