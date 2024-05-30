@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="http://127.0.0.1/system_test/">
+        <link rel="canonical" href="http://127.0.0.1/design/sequence_diagrams/">
       
       
-        <link rel="prev" href="../design/class_diagrams/">
+        <link rel="prev" href="../domain_model/">
       
       
-        <link rel="next" href="../unit_test/">
+        <link rel="next" href="../class_diagrams/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.22">
     
     
       
-        <title>System test - exam slayer</title>
+        <title>Sequence diagrams - exam slayer</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.732c4fb1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.732c4fb1.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sistem-test-document" class="md-skip">
+        <a href="#sequence-diagram" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="exam slayer" class="md-header__button md-logo" aria-label="exam slayer" data-md-component="logo">
+    <a href="../.." title="exam slayer" class="md-header__button md-logo" aria-label="exam slayer" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              System test
+              Sequence diagrams
             
           </span>
         </div>
@@ -211,7 +211,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="exam slayer" class="md-nav__button md-logo" aria-label="exam slayer" data-md-component="logo">
+    <a href="../.." title="exam slayer" class="md-nav__button md-logo" aria-label="exam slayer" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -229,7 +229,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -238,116 +238,6 @@
   
 
       </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Design documentation
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Design documentation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../design/domain_model/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Domain model
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../design/sequence_diagrams/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Sequence diagrams
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../design/class_diagrams/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Class diagrams
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -373,26 +263,47 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    Testing
+    Design documentation
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Testing
+            Design documentation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../domain_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Domain model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -410,15 +321,54 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Sequence diagrams
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    System test
+    Sequence diagrams
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-sequence-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Sequence diagram
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -432,7 +382,96 @@
   
   
     <li class="md-nav__item">
-      <a href="../unit_test/" class="md-nav__link">
+      <a href="../class_diagrams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class diagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system_test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit_test/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -460,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../class/" class="md-nav__link">
+      <a href="../../class/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -493,6 +532,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-sequence-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Sequence diagram
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -506,16 +562,43 @@
                   
 
 
-<h1 id="sistem-test-document">Sistem Test Document</h1>
+<h1 id="sequence-diagram">Sequence diagram</h1>
+<h2 id="system-sequence-diagram">System Sequence diagram</h2>
+<pre class="mermaid"><code>sequenceDiagram
+  Actor Player
+  Game -&gt;&gt; Player: asks new game or load one?
+  alt new game
+    Game -&gt;&gt; Game: start new game
+  else load one
+    Game --&gt; Game: load existing saving
+  end
+  par  
+    loop
+      Game-&gt;&gt;Game: refresh the map
+    end
+    Player -&gt;&gt; Game: moves in the map
+    alt went through a door?
+      Game-&gt;&gt;Player: change room displayed
+    end
+    Player -&gt;&gt; Game: shoots
+    alt hits entity &amp; entity life = 0?
+      Game -&gt;&gt; Player: entity died
+    else
+      Game -&gt;&gt; Game: decrease entity life
+    end
+    Player -&gt;&gt; Game: collects item
+    alt collected heart?
+      Game -&gt;&gt; Player: increase life points
+    else
+      Game -&gt;&gt; Player: increas atk points
+    end
+  end</code></pre>
 
 
 
 
 
 
-
-  
-  
 
 
 
@@ -564,10 +647,10 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.sections"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.instant", "navigation.instant.progress", "navigation.sections"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.5cfa9459.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
       
     
   </body>
