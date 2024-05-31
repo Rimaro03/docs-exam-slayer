@@ -5,6 +5,7 @@
 classDiagram
   SavingIO --* Vec2Int: contains many
   SavingIO --* ListReader: contains
+
   Savable ..|> ListReader
 ```
 
@@ -15,7 +16,7 @@ classDiagram
   Item ..|> Sword
 ```
 
-[//]: # (TODO split generation class diagram diagram)
+[//]: # (TODO split generation class diagram diagram (separate level and room))
 
 ## Generation class diagram
 ```mermaid
@@ -45,6 +46,8 @@ classDiagram
   Room --> Game: uses
   Room --* GameObject: contains
   Room --> GameObjectFactory: uses
+  Room --> Collider: uses
+  Room --> BoxCollider: uses
   
   Level --> Algorithm: uses
   Level --* Room: contains many
@@ -112,7 +115,7 @@ classDiagram
 ```
 [//]: # (TODO split component class diagram diagram)
 
-## Component system class diagram
+## Component class diagram
 ```mermaid
 classDiagram
   GameObject --* Component: contains many
@@ -130,15 +133,17 @@ classDiagram
   GameObjectFactory --* Projectile: contains
   GameObjectFactory --* ItemController: contains
   GameObjectFactory --* ItemCollider: contains
+  GameObjectFactory --> Collider: uses
+  GameObjectFactory --> WeaponData: uses
 
   Component --* GameObject: contains
   Component --> Vec2: uses
 
-  ItemController --|> Component: inherits
+  ItemController --|> Component: extends
   ItemController --> GameObject: uses
   ItemController --* Item: contains
 
-  PlayerController --|> Component: inherits
+  PlayerController --|> Component: extends
   PlayerController --> Time: uses
   PlayerController --> Input: uses
   PlayerController --> GameObject: uses
@@ -146,7 +151,7 @@ classDiagram
   PlayerController --* AnimatedSpriteRenderer: contains
   PlayerController --* Vec2: contains
 
-  Projectile --|> Component: inherits
+  Projectile --|> Component: extends
   Projectile --> Time: uses
   Projectile --> GameObject: uses
   Projectile --* Vec2: contains
@@ -159,43 +164,99 @@ classDiagram
 ### Component Colliders class diagram
 ```mermaid
 classDiagram
-  AbstractBoxCollider --> GameObject: uses
-
+  Collider --|> Component: extends
   Collider --> GameObject: uses
 
+  AbstractBoxCollider --|> Collider: extends
+  AbstractBoxCollider --> GameObject: uses
+  AbstractBoxCollider --* Vec2: contains
+  AbstractBoxCollider --> Collider: uses
+  AbstractBoxCollider --* AbstractCircleCollider: contains
+  AbstractBoxCollider --> CircleCollider: uses
+
+  AbstractCircleCollider --|> Collider: extends
+  AbstractCircleCollider --> GameObject: uses
+  AbstractCircleCollider --* Vec2: contains
+  AbstractCircleCollider --> Collider: uses
+
+  BoxCollider --|> AbstractBoxCollider: extends
   BoxCollider --> Game: uses
   BoxCollider --> Debug: uses
   BoxCollider --> Renderer: uses
+  BoxCollider --* Vec2: contains
+  BoxCollider --> GameObject: uses
+  BoxCollider --> Collider: uses
+  BoxCollider --* CircleCollider: contains
 
+  CircleCollider --|> AbstractCircleCollider: extends
   CircleCollider --> Game: uses
   CircleCollider --> Debug: uses
   CircleCollider --> Renderer: uses
   CircleCollider --> GameObject: uses
+  CircleCollider --> AbstractBoxCollider: uses
+  CircleCollider --* BoxCollider: contains
 
+  DoorCollider --|> AbstractBoxCollider: extends
   DoorCollider --> Game: uses
   DoorCollider --> Debug: uses
   DoorCollider --> GameObject: uses
+  DoorCollider --> Renderer: uses
+  DoorCollider --> Direction: uses
+  DoorCollider --> Room: uses
+  DoorCollider --> Collider: uses
+  DoorCollider --* Vec2: contains
 
+  ItemCollider --|> BoxCollider: extends
+  ItemCollider --> GameObject: uses
+  ItemCollider --> AnimatedSpriteRenderer: uses
+  ItemCollider --> Collider: uses
+  ItemCollider --* PlayerStats: contains
+  ItemCollider --* Item: contains
+  ItemCollider --* Vec2: contains
+
+  ProjectileCollider --|> AbstractBoxCollider: extends
   ProjectileCollider --> Game: uses
+  ProjectileCollider --> Contains: uses
   ProjectileCollider --* GameObject: contains
+  ProjectileCollider --* Projectile: contains
+  ProjectileCollider --* Stats: contains
 ```
 ### Component Stats class diagram
 ```mermaid
 classDiagram
+  Stats --|> Component: extends
   Stats --> Game: uses
+  Stats --> GameObject: uses
 
-  PlayerStats --|> Stats: inherits
+  PlayerStats --|> Stats: extends
   PlayerStats --> Renderer: uses
+  PlayerStats --> GameObject: uses
+  PlayerStats --> Heart: uses
+  PlayerStats --* Item: contains many
+  PlayerStats --* Vec2: contains
 
-  EntityStats --|> Stats: inherits
+  EntityStats --|> Stats: extends
   EntityStats --> GameObject: uses
 ```
 ### Component Weapons class diagram
 ```mermaid
 classDiagram
+  PlayerShootingController --|> Component: extends
   PlayerShootingController --> Time: uses
   PlayerShootingController --> Input: uses
   PlayerShootingController --> Game: uses
   PlayerShootingController --> GameObjectFactory: uses
+  PlayerShootingController --> WeaponData: uses
   PlayerShootingController --* GameObject: contains
+  PlayerShootingController --* Vec2: contains
+
+  WeaponData --> WeaponType: uses
+```
+
+## Utils class diagram
+```mermaid
+classDiagram
+  class Vec2
+
+  Vec2Int ..|> Savable: implements
 ```
