@@ -32,3 +32,22 @@ sequenceDiagram
     end
   end
 ```
+
+## Internal sequence diagrams
+### Movement
+```mermaid
+sequenceDiagram
+  Actor Player
+  Player ->> Controller: moves
+  alt keyPressed == A
+    Controller ->> Controller: delta.add(new Vec2(-1, 0))
+  else keyPressed == D
+    Controller ->> Controller: delta.add(new Vec2(1, 0))
+  else keyPressed == W
+    Controller ->> Controller: delta.add(new Vec2(0, 1))
+  else keyPressed == S
+    Controller ->> Controller: delta.add(new Vec2(0, -1))
+  end
+  Controller ->> AnimatedSpriteRenderer: setSheetState(x,y)
+  Controller ->> Component: setPosition(position)
+```
