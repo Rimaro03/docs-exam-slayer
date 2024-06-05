@@ -8,13 +8,12 @@ sequenceDiagram
   alt new game
     Game ->> Game: start new game
   else load one
-    Game --> Game: load existing saving
+    Game ->> Game: load existing saving
   end
-  par  
-    loop
-      Game->>Game: refresh the map
-    end
+  loop  
+    Game->>Game: refresh the map
     Player ->> Game: moves in the map
+    Game ->> Player: update player position
     alt went through a door?
       Game->>Player: change room displayed
     end
@@ -39,15 +38,14 @@ sequenceDiagram
 sequenceDiagram
   Actor Player
   Player ->> Controller: moves
-  alt keyPressed == A
-    Controller ->> Controller: delta.add(new Vec2(-1, 0))
-  else keyPressed == D
-    Controller ->> Controller: delta.add(new Vec2(1, 0))
-  else keyPressed == W
-    Controller ->> Controller: delta.add(new Vec2(0, 1))
-  else keyPressed == S
-    Controller ->> Controller: delta.add(new Vec2(0, -1))
-  end
+  Controller ->> Input: keyPressed(keyCode)
+  activate Input
+  Input ->> Controller: true if key pressed
+  deactivate Input
+  Controller ->> Controller: updates position vector
   Controller ->> AnimatedSpriteRenderer: setSheetState(x,y)
   Controller ->> Component: setPosition(position)
+  loop
+    Window ->> Player: repaint
+  end
 ```

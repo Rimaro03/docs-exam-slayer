@@ -39,6 +39,8 @@ The compilation process is automated with Maven, which create the `.jar` file in
 | Maven      | 3.9.6   | Software that manages the project's build and its dependecies |
 | Java Swing | 1.4.2   | Graphic framework for Java, used to develop the GUI           |
 
+## Project structure
+
 
 ## World generation
 Each time a new game is created, a random map is generated; the map generation is handled with the `wave function collapse algorithm`. <br/> <u>Breaf explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
