@@ -18,7 +18,11 @@ theme:
     - navigation.top
     - navigation.instant
     - navigation.instant.progress
-    - navigation.sections
+    - navigation.path
+    - toc.integrate
+    - navigation.tabs
+    - navigation.tabs.sticky
+
 plugins:
   - search
   - mkdocs-nav-weight:
