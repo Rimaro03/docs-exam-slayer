@@ -38,14 +38,55 @@ sequenceDiagram
 sequenceDiagram
   Actor Player
   Player ->> Controller: moves
-  Controller ->> Input: keyPressed(keyCode)
-  activate Input
-  Input ->> Controller: true if key pressed
-  deactivate Input
-  Controller ->> Controller: updates position vector
-  Controller ->> AnimatedSpriteRenderer: setSheetState(x,y)
-  Controller ->> Component: setPosition(position)
-  loop
-    Window ->> Player: repaint
-  end
+  activate Controller
+    Controller ->> Input: keyPressed(keyCode)
+    activate Input
+    Input ->> Controller: true if key pressed
+    deactivate Input
+    Controller ->> Controller: updates position vector
+    Controller ->> AnimatedSpriteRenderer: setSheetState(x,y)
+    activate AnimatedSpriteRenderer
+      AnimatedSpriteRenderer -->> Controller: 
+    deactivate AnimatedSpriteRenderer
+    Controller ->> Component: setPosition(position)
+    activate Component
+      Component -->> Controller: 
+    deactivate Component
+    Controller -->> Player: 
+  deactivate Controller
 ```
+
+### Shooting
+```mermaid
+sequenceDiagram
+  Actor Player
+  Player ->> Controller: shoots
+  activate Controller
+    Controller ->> Input: keyPressed(keyCode)
+    activate Input
+      Input -->> Controller: true if key pressed
+    deactivate Input
+    Controller ->> GameObjectFactory: createProjectile()
+    activate GameObjectFactory
+      GameObjectFactory ->> GameObjectFactory: createGameObject()
+      GameObjectFactory -->> Controller: 
+    deactivate GameObjectFactory
+    Controller ->> Level: instantiateGameObject
+    activate Level
+      Level ->> GameObject: setPosition(position)
+      activate GameObject
+        Level ->> GameObject: setEnabled(bool)
+        Level ->> GameObject: start()
+        GameObject -->> Level: 
+      deactivate GameObject
+      Level ->> Room: addGameObject(gameObject)
+      activate Room
+        Room -->> Level: 
+      deactivate Room
+      Level -->> Controller: 
+    deactivate Level
+    Controller -->> Player: 
+  deactivate Controller
+```
+
+### Items
