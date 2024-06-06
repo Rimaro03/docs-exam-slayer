@@ -90,3 +90,44 @@ sequenceDiagram
 ```
 
 ### Items
+``` mermaid
+sequenceDiagram
+  Actor Player
+  Player ->> ItemCollider: collides with item
+
+  activate ItemCollider
+    ItemCollider ->> PlayerStats: getStats
+    activate PlayerStats
+      PlayerStats ->> ItemCollider: player stats
+    deactivate PlayerStats
+
+    ItemCollider ->> ItemCollider: getItem
+
+    ItemCollider ->> PlayerStats: inventory.put(item, number)
+    activate PlayerStats
+      PlayerStats -->> ItemCollider: 
+    deactivate PlayerStats
+
+    ItemCollider ->> Item: onPickup(gameObject)
+    activate Item
+      Item ->> PlayerStats: setSpeed(integer)
+      activate PlayerStats
+        PlayerStats -->> Item: 
+        alt Item = Heart
+          Item ->> PlayerStats: setHealth(integer)
+          PlayerStats -->> Item: 
+        else
+          Item ->> PlayerStats: addComponent(controller)
+          PlayerStats -->> Item: 
+        end
+      deactivate PlayerStats
+      Item -->> ItemCollider: 
+    deactivate Item
+
+    ItemCollider ->> Level: destroyGameObject(gameObject)
+    activate Level
+      Level -->> ItemCollider: 
+    deactivate Level
+    ItemCollider -->> Player: 
+  deactivate ItemCollider
+```
