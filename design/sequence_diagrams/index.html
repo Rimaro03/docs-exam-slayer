@@ -489,6 +489,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#saving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -735,6 +753,114 @@
     Controller --&gt;&gt; Player: 
   deactivate Controller</code></pre>
 <h3 id="items">Items</h3>
+<pre class="mermaid"><code>sequenceDiagram
+  Actor Player
+  Player -&gt;&gt; ItemCollider: collides with item
+
+  activate ItemCollider
+    ItemCollider -&gt;&gt; PlayerStats: getStats
+    activate PlayerStats
+      PlayerStats -&gt;&gt; ItemCollider: player stats
+    deactivate PlayerStats
+
+    ItemCollider -&gt;&gt; ItemCollider: getItem
+
+    ItemCollider -&gt;&gt; PlayerStats: inventory.put(item, number)
+    activate PlayerStats
+      PlayerStats --&gt;&gt; ItemCollider: 
+    deactivate PlayerStats
+
+    ItemCollider -&gt;&gt; Item: onPickup(gameObject)
+    activate Item
+      Item -&gt;&gt; PlayerStats: setSpeed(integer)
+      activate PlayerStats
+        PlayerStats --&gt;&gt; Item: 
+        alt Item = Heart
+          Item -&gt;&gt; PlayerStats: setHealth(integer)
+          PlayerStats --&gt;&gt; Item: 
+        else
+          Item -&gt;&gt; PlayerStats: addComponent(controller)
+          PlayerStats --&gt;&gt; Item: 
+        end
+      deactivate PlayerStats
+      Item --&gt;&gt; ItemCollider: 
+    deactivate Item
+
+    ItemCollider -&gt;&gt; Level: destroyGameObject(gameObject)
+    activate Level
+      Level --&gt;&gt; ItemCollider: 
+    deactivate Level
+    ItemCollider --&gt;&gt; Player: 
+  deactivate ItemCollider</code></pre>
+<h3 id="saving">Saving</h3>
+<pre class="mermaid"><code>sequenceDiagram
+  Actor Player
+  Player -&gt;&gt; EscMenu: toggles
+  activate EscMenu
+    EscMenu -&gt;&gt; Input: keyPressed(keycode)
+    activate Input
+      Input -&gt;&gt; EscMenu: true if key pressed
+    deactivate Input
+
+    EscMenu -&gt;&gt; Renderer: render menu to screen
+    activate Renderer
+      Renderer --&gt;&gt; EscMenu: 
+    deactivate Renderer
+
+    EscMenu -&gt;&gt; Input: check enter pressed
+    activate Input
+      Input -&gt;&gt; EscMenu: menu item selected
+    deactivate Input
+    alt selected resume
+      EscMenu -&gt;&gt; Game: setPaused(false)
+      activate Game
+        Game --&gt;&gt; EscMenu: 
+      deactivate Game
+    else selected save
+      EscMenu -&gt;&gt; SavingIO: flush
+      activate SavingIO
+        SavingIO -&gt;&gt; BucketManager: upload file
+        activate BucketManager
+          BucketManager -&gt;&gt; Bucket: create a file
+          activate Bucket
+            Bucket --&gt;&gt; BucketManager: 
+          deactivate Bucket
+          BucketManager --&gt;&gt; SavingIO: 
+        deactivate BucketManager
+        SavingIO --&gt;&gt; EscMenu: 
+      deactivate SavingIO
+    else selected exit
+      EscMenu -&gt;&gt; Game: system.exit
+      activate Game
+        Game --&gt;&gt; EscMenu: 
+      deactivate Game
+    end
+    EscMenu --&gt;&gt; Player: 
+  deactivate EscMenu</code></pre>
+<h3 id="loading">Loading</h3>
+<pre class="mermaid"><code>sequenceDiagram
+  Actor Player
+
+  Player -&gt;&gt; Application: chooses to load/delete data
+  Application -&gt;&gt; Game: load new game
+  activate Game
+    alt player chose to delete
+      Game -&gt;&gt; BucketManager: delete file
+      activate BucketManager
+        BucketManager -&gt;&gt; Blob: delete
+        activate Blob
+          Blob --&gt;&gt; BucketManager: 
+        BucketManager  --&gt;&gt; Game: 
+      deactivate BucketManager
+    end
+    Game --&gt;&gt; Application: 
+  deactivate Game
+
+
+
+  activate Application
+    Application --&gt;&gt; Player: 
+  deactivate Application</code></pre>
 
 
 
