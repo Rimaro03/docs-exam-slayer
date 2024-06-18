@@ -131,3 +131,78 @@ sequenceDiagram
     ItemCollider -->> Player: 
   deactivate ItemCollider
 ```
+
+### Saving
+```mermaid
+sequenceDiagram
+  Actor Player
+  Player ->> EscMenu: toggles
+  activate EscMenu
+    EscMenu ->> Input: keyPressed(keycode)
+    activate Input
+      Input ->> EscMenu: true if key pressed
+    deactivate Input
+
+    EscMenu ->> Renderer: render menu to screen
+    activate Renderer
+      Renderer -->> EscMenu: 
+    deactivate Renderer
+
+    EscMenu ->> Input: check enter pressed
+    activate Input
+      Input ->> EscMenu: menu item selected
+    deactivate Input
+    alt selected resume
+      EscMenu ->> Game: setPaused(false)
+      activate Game
+        Game -->> EscMenu: 
+      deactivate Game
+    else selected save
+      EscMenu ->> SavingIO: flush
+      activate SavingIO
+        SavingIO ->> BucketManager: upload file
+        activate BucketManager
+          BucketManager ->> Bucket: create a file
+          activate Bucket
+            Bucket -->> BucketManager: 
+          deactivate Bucket
+          BucketManager -->> SavingIO: 
+        deactivate BucketManager
+        SavingIO -->> EscMenu: 
+      deactivate SavingIO
+    else selected exit
+      EscMenu ->> Game: system.exit
+      activate Game
+        Game -->> EscMenu: 
+      deactivate Game
+    end
+    EscMenu -->> Player: 
+  deactivate EscMenu
+```
+
+### Loading
+```mermaid
+sequenceDiagram
+  Actor Player
+
+  Player ->> Application: chooses to load/delete data
+  Application ->> Game: load new game
+  activate Game
+    alt player chose to delete
+      Game ->> BucketManager: delete file
+      activate BucketManager
+        BucketManager ->> Blob: delete
+        activate Blob
+          Blob -->> BucketManager: 
+        BucketManager  -->> Game: 
+      deactivate BucketManager
+    end
+    Game -->> Application: 
+  deactivate Game
+
+
+
+  activate Application
+    Application -->> Player: 
+  deactivate Application
+```
