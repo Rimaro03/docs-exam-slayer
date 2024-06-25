@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sistem-test-document" class="md-skip">
+        <a href="#system-test-document" class="md-skip">
           Skip to content
         </a>
       
@@ -494,6 +494,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    System test
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -503,6 +514,79 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#view-the-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      View the inventory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#move-between-rooms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Move between rooms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collecting-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collecting items
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interact-with-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interact with entities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beat-bosses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beat bosses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-and-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving and loading
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -572,7 +656,164 @@
                   
 
 
-<h1 id="sistem-test-document">Sistem Test Document</h1>
+<h1 id="system-test-document">System Test Document</h1>
+<p>Each user stories has some acceptance criteria with their results.</p>
+<h2 id="view-the-inventory">View the inventory</h2>
+<p><em>As a player I want to view my inventory anytime so that I can view which items I'm carrying</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Display a window in the game for the inventory</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Store the items the player collects</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">When the player collect a new item, add it to the inventory</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="move-between-rooms">Move between rooms</h2>
+<p><em>As a player, I want to be able to move between the rooms so that I can explore the game map</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Generate the game map</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Divide the game map into rooms</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Add doors to move between the rooms, not all rooms should be directly connected</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Implement player movement</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="collecting-items">Collecting items</h2>
+<p><em>As a player, I want to collect and use the items I find while exploring the game map to be able to use them</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Add various types of items inside each room</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Let the player collect the collectable items</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Implement a way to use these items, such as shooting</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interact-with-entities">Interact with entities</h2>
+<p><em>As a player, I want to interact with other entities so that I can defeat enemies, for example</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Generate other entities in the game map</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Entities must have limited life</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Bosses should have more life than simple enemies</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Let the player interact with entities, like shooting</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="beat-bosses">Beat bosses</h2>
+<p><em>As a player, I want to beat the bosses so that I can complete the game</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Spawn bosses in some parts of the map</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Bosses should be more difficult to defeat</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">When each boss is defeated, the player has completed the game</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="saving-and-loading">Saving and loading</h2>
+<p><em>As a player, I wan to save and load the game so that I can play the game when I want without losing savings</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Implement cloud game save</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Implement loading game from cloud savings</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Delete a saving if the player dies</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Create new saving if the player starts a new game</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+</tbody>
+</table>
 
 
 
