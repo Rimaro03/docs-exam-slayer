@@ -5,23 +5,22 @@ summary: Project manual containing the game description, tenchnologies used, how
 
 # __Exam Slayer - Final course exam project__
 
-Full documentation of the project. Check out the source code [here](https://github.com/UNI-projects-team/exam-slayer)
+Full documentation of the project. Check out the source code [here](https://github.com/UNI-projects-team/exam-slayer).
 
 ## Brief description
 
-Exam Slayer is a 2D graphical adventure game, set in various UniPD classrooms. The goal of the game is to __graduate__: as in real life,
+Exam Slayer is a 2D graphical adventure game, set in an imaginary dungeon. The goal of the game is to __graduate__: as in real life,
 to achieve such goal you need to pass some exams, represented in the game as boss to defeat.
 
 ## How to play
-The game consists of __three levels__, which represent three academical years. To complete the game, you need to pass each level by collecting enough CFUs, dropped by each boss you defeat.
+The game consists of __four bosses__, which represent four exams to pass. To complete the game, you need to pass each exam by finding and defeating the bosses. 
 
-Finally, during the gameplay, you can collect and use the items you find, for example spending money on the vending machiens to buy upgrades.
-
+In addition, during the gameplay, you will have to deal with many enemies in order continue your adventure. To fight them, you can collect and use the items scattered in each room of the game map.
 
 ## Installation and execution
-To download the game in `.jar` format, get the last release from [here](https://www.github.com).
+To download the game in `.jar` format, get the last release from [here](https://github.com/UNI-projects-team/exam-slayer).
 
-If you want to compile the game yourself, make sure you have `git` installed, the follow these instructions:
+If you wish to compile the game yourself, make sure you have `git` and `maven` installed, the follow these instructions:
 ```bash
 git clone https://github.com/UNI-projects-team/exam-slayer
 cd exam-slayer
@@ -42,22 +41,43 @@ The compilation process is automated with Maven, which create the `.jar` file in
 | Mokito       | 5.12.2  | Mocking framework for unit tests in Java, helps to create temporary classes |
 
 ## Project structure
+Here is how the game is structured:
+<div class="grid" markdown>
+
+- **Application**: It's the frame where the game is displayed, launched by the main file
+- **Game**: The application launches one game
+- **Level**: The game may contain multiple level, in this case just one
+- **Room**: Each level contains multiple rooms, organized in the game map
+- **GameObject**: Each room contains some game objects, like items and enemies
+- **Component**: Each game object is composed by component, that allow it to do something (es. controllers, colliders)
+
+``` mermaid 
+classDiagram
+
+Application --|> Game
+
+Game --|> Level
+
+Level --|> Room1
+Level --|> Room2
+
+Room1 --|> GameObject1
+Room1 --|> GameObject2
+
+GameObject2 --|> Component1
+GameObject2 --|> Component2
+```
+</div>
 
 
 ## World generation
 Each time a new game is created, a random map is generated; the map generation is handled with the `wave function collapse algorithm`. <br/> <u>Breaf explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
 For a more detailed explenation, refer to [this video](https://www.youtube.com/watch?v=2SuvO4Gi7uY&t=31s&pp=ygUXd2F2ZSBjb2xsYXBzZSBhbGdvcml0aG0%3D).
 
-## Colliders
-
 ## Programming techniques used
-- Singletons
-- Controllers
-- Factory
-
-## Menus
-- Main menu
-- Death menu
+- **Singletons**: used for classes such as *game*, which can't be instanciated more than once.
+- **Controllers**: used to handle user input in the game. Eg. movement controller, shooting controller.
+- **Factory**: used to create different types of game objects.
 
 ## Final notes
 - __Class Diagram__<br/> The class diagram has been divided into three parts (main, level, items) so that its easier to read it. Keeping it united would have resulted in a too small diagram.
