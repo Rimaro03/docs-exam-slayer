@@ -32,12 +32,14 @@ The compilation process is automated with Maven, which create the `.jar` file in
 
 ## Technologies used
 
-| Name       | Version | Description                                                   |
-| :--------- | :------ | :------------------------------------------------------------ |
-| Lombok     | 1.18.32 | Java library that writes code like getters automatically      |
-| Junit      | 4.13.2  | Java framework used for developer-side testing on the JVM     |
-| Maven      | 3.9.6   | Software that manages the project's build and its dependecies |
-| Java Swing | 1.4.2   | Graphic framework for Java, used to develop the GUI           |
+| Name         | Version | Description                                                                 |
+| :----------- | :------ | :-------------------------------------------------------------------------- |
+| Lombok       | 1.18.32 | Java library that writes code like getters automatically                    |
+| Junit        | 4.13.2  | Java framework used for developer-side testing on the JVM                   |
+| Maven        | 3.9.6   | Software that manages the project's build and its dependecies               |
+| Java Swing   | 1.4.2   | Graphic framework for Java, used to develop the GUI                         |
+| Google cloud | 2.39.0  | Optimized library to connect to the google cloud API                        |
+| Mokito       | 5.12.2  | Mocking framework for unit tests in Java, helps to create temporary classes |
 
 ## Project structure
 
@@ -48,7 +50,14 @@ For a more detailed explenation, refer to [this video](https://www.youtube.com/w
 
 ## Colliders
 
-## Controllers
+## Programming techniques used
+- Singletons
+- Controllers
+- Factory
+
+## Menus
+- Main menu
+- Death menu
 
 ## Final notes
 - __Class Diagram__<br/> The class diagram has been divided into three parts (main, level, items) so that its easier to read it. Keeping it united would have resulted in a too small diagram.
