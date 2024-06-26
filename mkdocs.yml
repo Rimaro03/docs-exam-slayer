@@ -31,6 +31,9 @@ plugins:
       warning: true
       reverse: false
       headless_included: false
+  - glightbox:
+      width: 100%
+      height: auto
 markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
@@ -48,8 +51,7 @@ nav:
   - Design documentation:
     - Domain model: design/domain_model.md
     - Sequence diagrams: design/sequence_diagrams.md
-    - Class diagrams: design/class_diagrams.md
+    - Class diagrams: design/classes.md
   - Testing:
     - System test: system_test.md
     - Unit test: unit_test.md
-  

@@ -78,6 +78,7 @@ For a more detailed explenation, refer to [this video](https://www.youtube.com/w
 - **Singletons**: used for classes such as *game*, which can't be instanciated more than once.
 - **Controllers**: used to handle user input in the game. Eg. movement controller, shooting controller.
 - **Factory**: used to create different types of game objects.
+- **Observer**
 
 ## Final notes
 - __Class Diagram__<br/> The class diagram has been divided into three parts (main, level, items) so that its easier to read it. Keeping it united would have resulted in a too small diagram.
