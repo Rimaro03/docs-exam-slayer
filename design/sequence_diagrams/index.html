@@ -14,7 +14,7 @@
         <link rel="prev" href="../domain_model/">
       
       
-        <link rel="next" href="../class_diagrams/">
+        <link rel="next" href="../classes/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -246,23 +255,6 @@
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../class/" class="md-tabs__link">
-        
-  
-    
-  
-  Complete class diagram
-
-      </a>
-    </li>
   
 
       
@@ -528,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../class_diagrams/" class="md-nav__link">
+      <a href="../classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -636,26 +628,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../class/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Complete class diagram
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -679,7 +651,8 @@
   alt new game
     Game -&gt;&gt; Game: start new game
   else load one
-    Game -&gt;&gt; Game: load existing saving
+    Game -&gt;&gt; Player: ask which save to load
+    Player -&gt;&gt; Game: select saving
   end
   loop  
     Game-&gt;&gt;Game: refresh the map
@@ -693,12 +666,15 @@
       Game -&gt;&gt; Player: entity died
     else
       Game -&gt;&gt; Game: decrease entity life
+      alt every boss defeated
+        Game -&gt;&gt; Player: notifies victory
+      end
     end
     Player -&gt;&gt; Game: collects item
     alt collected heart?
       Game -&gt;&gt; Player: increase life points
     else
-      Game -&gt;&gt; Player: increas atk points
+      Game -&gt;&gt; Player: increas atk points, decrease speed
     end
   end</code></pre>
 <h2 id="internal-sequence-diagrams">Internal sequence diagrams</h2>
@@ -921,5 +897,7 @@
       <script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

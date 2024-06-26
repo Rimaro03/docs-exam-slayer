@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -249,23 +258,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../class/" class="md-tabs__link">
-        
-  
-    
-  
-  Complete class diagram
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -429,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../class_diagrams/" class="md-nav__link">
+      <a href="../classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,26 +529,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../class/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Complete class diagram
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -575,18 +547,19 @@
 <h1 id="domain-model">Domain model</h1>
 <pre class="mermaid"><code>classDiagram
     player --&gt; room: moves between
-    player --&gt; item: interact with
-    player --&gt; fixed_item: interact with
-    player --&gt; entity: interact with
+    player --&gt; item: collects
+    player --&gt; enemies: interact with
+    player --&gt; bosses: interact with
     player --&gt; save_load: use
     player --&gt; win: views
+    player --&gt; item: uses
     save_load --&gt; game: save/loads
     game --&gt; win: notifies
-    game --&gt; map: has
-    map --&gt; room: contains
-    map --&gt; entity: contains
-    map --&gt; item: contains
-    map --&gt; fixed_item: contains
+    game --&gt; level: has
+    level --&gt; room: has
+    room --&gt; enemies: contains
+    room --&gt; bosses: contains
+    room --&gt; item: contains
 
     class player {
         stats
@@ -652,5 +625,7 @@
       <script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
