@@ -8,7 +8,8 @@ sequenceDiagram
   alt new game
     Game ->> Game: start new game
   else load one
-    Game ->> Game: load existing saving
+    Game ->> Player: ask which save to load
+    Player ->> Game: select saving
   end
   loop  
     Game->>Game: refresh the map
@@ -22,12 +23,15 @@ sequenceDiagram
       Game ->> Player: entity died
     else
       Game ->> Game: decrease entity life
+      alt every boss defeated
+        Game ->> Player: notifies victory
+      end
     end
     Player ->> Game: collects item
     alt collected heart?
       Game ->> Player: increase life points
     else
-      Game ->> Player: increas atk points
+      Game ->> Player: increas atk points, decrease speed
     end
   end
 ```
