@@ -3,18 +3,19 @@
 ``` mermaid
 classDiagram
     player --> room: moves between
-    player --> item: interact with
-    player --> fixed_item: interact with
-    player --> entity: interact with
+    player --> item: collects
+    player --> enemies: interact with
+    player --> bosses: interact with
     player --> save_load: use
     player --> win: views
+    player --> item: uses
     save_load --> game: save/loads
     game --> win: notifies
-    game --> map: has
-    map --> room: contains
-    map --> entity: contains
-    map --> item: contains
-    map --> fixed_item: contains
+    game --> level: has
+    level --> room: has
+    room --> enemies: contains
+    room --> bosses: contains
+    room --> item: contains
 
     class player {
         stats
