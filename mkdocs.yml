@@ -52,5 +52,4 @@ nav:
   - Testing:
     - System test: system_test.md
     - Unit test: unit_test.md
-  - Complete class diagram: class.md
   
