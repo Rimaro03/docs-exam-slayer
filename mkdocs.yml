@@ -34,15 +34,19 @@ plugins:
   - glightbox:
       width: 100%
       height: auto
+  - iframe:
+      reports:
+        - unit_test
+
 markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+  - def_list
   - attr_list
   - md_in_html
 
