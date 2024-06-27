@@ -80,11 +80,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#unit-test-document" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -502,8 +497,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -542,17 +535,40 @@
                   
 
 
-<h1 id="unit-test-document">Unit Test Document</h1>
-<p>Clicca <a href="../unit_test.html" target="_blank">qui</a></p>
+  <h1>Unit test</h1>
+
+<style>
+article h1, article > a, .md-sidebar--secondary {
+    display: none !important;
+}
+</style>
+
+<p><iframe
+    id="unit_testiframe"
+    src="unit_testindex.html"
+    frameborder="0"
+    scrolling="no"
+    onload="resizeIframe();"
+    width="100%">
+</iframe>
+</p>
+<script>
+var unit_testiframe = document.getElementById("unit_testiframe");
+
+function resizeIframe() {
+    unit_testiframe.style.height = unit_testiframe.contentWindow.document.documentElement.offsetHeight + 'px';
+}
+
+testiframe.contentWindow.document.body.onclick = function() {
+    unit_testiframe.contentWindow.location.reload();
+}
+</script>
 
 
 
 
 
 
-
-  
-  
 
 
 
