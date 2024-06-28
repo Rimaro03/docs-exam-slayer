@@ -17,6 +17,23 @@ The game consists of __four bosses__, which represent four exams to pass. To com
 
 In addition, during the gameplay, you will have to deal with many enemies in order continue your adventure. To fight them, you can collect and use the items scattered in each room of the game map.
 
+### Controls 
+ - Move:
+    - `W`: Move forward
+    - `A`: Move left
+    - `S`: Move backward
+    - `D`: Move right
+- Attack:
+    - `Left arrow`: Shoot left
+    - `Right arrow`: Shoot right
+    - `Up arrow`: Shoot up
+    - `Down arrow`: Shoot down
+- General:
+    - `ESC`: Pause the game
+    - `Backspace`: when used in a save slot, it deletes the save 
+
+    
+
 ## Installation and execution
 To download the game in `.jar` format, get the last release from [here](https://github.com/UNI-projects-team/exam-slayer).
 
@@ -44,12 +61,44 @@ The compilation process is automated with Maven, which create the `.jar` file in
 Here is how the game is structured:
 <div class="grid" markdown>
 
+<div markdown>
 - **Application**: It's the frame where the game is displayed, launched by the main file
 - **Game**: The application launches one game
 - **Level**: The game may contain multiple level, in this case just one
 - **Room**: Each level contains multiple rooms, organized in the game map
 - **GameObject**: Each room contains some game objects, like items and enemies
 - **Component**: Each game object is composed by component, that allow it to do something (es. controllers, colliders)
+<br>
+### Exemple
+
+Every GameObject is created with a set of components, like a controller that allows it to move, or a collider that allows it to interact with other objects.
+If I want to create a player, I will contact the GameObject factory, which will create a GameObject with the components needed to move and shoot.
+
+```java
+public static GameObject createPlayer() {
+    GameObject player = createGameObject("Player");
+
+    return createGameObject(
+            player, // GameObject   
+
+            // All the components needed by the player
+            new PlayerStats(player, 100, 15) 
+                .addItem(new Book(
+                    "DefaultPhysicsBook",
+                    1,
+                    "resources/textures/touchable/book.png",
+                    "resources/textures/stats/items/defaultItem.png"
+                )), // A builder pattern is used to create the player stats
+            new AnimatedSpriteRenderer(player, "resources/textures/characters/MainCharacter.png", 32, 32, 1), // The sprite renderer
+            new PlayerController(player), // The controller that allows the player to move
+            new PlayerShootingController(player, WeaponType.PhysicsBook), // The controller that allows the player to shoot
+            new BoxCollider(player, new Vec2(1.2f, 2), true, true), // The collider that allows the player to interact with other objects
+            new PauseMenu(player), // The pause menu
+            new BossKillCounter(player) // The counter that keeps track of the bosses killed
+    );
+}
+```
+</div>
 
 ``` mermaid 
 classDiagram
@@ -77,9 +126,10 @@ For a more detailed explenation, refer to [this video](https://www.youtube.com/w
 ## Programming techniques used
 - **Singletons**: used for classes such as *game*, which can't be instanciated more than once.
 - **Controllers**: used to handle user input in the game. Eg. movement controller, shooting controller.
-- **Factory**: used to create different types of game objects.
-- **Observer**
+- **Factory**: used to create different types of game objects (eg. player, enemies, items).
+- **Observer** such as to notify when an item is picked up.
+- **Builder pattern**: used to create complex objects, like the inventory of the player.
 
-## Final notes
-- __Class Diagram__<br/> The class diagram has been divided into three parts (main, level, items) so that its easier to read it. Keeping it united would have resulted in a too small diagram.
-<!--TODO: Setup bucket>
+## Setup bucket
+The game is set up in a bucket on Google Cloud, which allows to store the game data and the save files. You need to have the credentials to access the bucket, which are stored in the `./resources/bucket/bucket_key.json` file. The bucket is used to store the game data and the save files.
+
