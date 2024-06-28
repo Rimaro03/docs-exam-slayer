@@ -3,8 +3,8 @@ Title: Sistem Test Document
 Description:
 ---
 
-# System Test Document
-Each user stories has some acceptance criteria with their results.
+# System Test Report
+Each user stories has some acceptance criteria with their system test results.
 
 ## View the inventory
 *As a player I want to view my inventory anytime so that I can view which items I'm carrying*
