@@ -42,7 +42,7 @@ If you wish to compile the game yourself, make sure you have `git` and `maven` i
 git clone https://github.com/UNI-projects-team/exam-slayer
 cd exam-slayer
 mvn clean compile assembly:single
-java -jar target/Progetto-edids-1.0.0-jar-with-dependencies.jar
+java -jar target/exam-slayer-1.0.0-jar-with-dependencies.jar
 ```
 The compilation process is automated with Maven, which create the `.jar` file in the `target/` directory inside the project root.
 
