@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#system-test-document" class="md-skip">
+        <a href="#acceptance-criteria" class="md-skip">
           Skip to content
         </a>
       
@@ -483,8 +483,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -513,8 +511,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -523,6 +519,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance criteria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acceptance criteria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#view-the-inventory" class="md-nav__link">
     <span class="md-ellipsis">
       View the inventory
@@ -530,8 +536,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#move-between-rooms" class="md-nav__link">
     <span class="md-ellipsis">
       Move between rooms
@@ -539,8 +545,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#collecting-items" class="md-nav__link">
     <span class="md-ellipsis">
       Collecting items
@@ -548,8 +554,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#interact-with-entities" class="md-nav__link">
     <span class="md-ellipsis">
       Interact with entities
@@ -557,8 +563,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#beat-bosses" class="md-nav__link">
     <span class="md-ellipsis">
       Beat bosses
@@ -566,11 +572,25 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#saving-and-loading" class="md-nav__link">
     <span class="md-ellipsis">
       Saving and loading
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-test-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Test Report
     </span>
   </a>
   
@@ -628,160 +648,111 @@
                   
 
 
-<h1 id="system-test-document">System Test Document</h1>
-<p>Each user stories has some acceptance criteria with their results.</p>
-<h2 id="view-the-inventory">View the inventory</h2>
+  <h1>System test</h1>
+
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<h3 id="view-the-inventory">View the inventory</h3>
 <p><em>As a player I want to view my inventory anytime so that I can view which items I'm carrying</em></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Acceptance Criteria</th>
-<th style="text-align: left;">Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Display a window in the game for the inventory</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Store the items the player collects</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">When the player collect a new item, add it to the inventory</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="move-between-rooms">Move between rooms</h2>
+<ul>
+<li><strong>Scenario</strong>: Show inventory if a game is in progres <br>
+    Given that the game is not started yet <br>
+    When I start/load a new game <br>
+    Then I can see my inventory on the screen <br></li>
+</ul>
+<h3 id="move-between-rooms">Move between rooms</h3>
 <p><em>As a player, I want to be able to move between the rooms so that I can explore the game map</em></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Acceptance Criteria</th>
-<th style="text-align: left;">Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Generate the game map</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Divide the game map into rooms</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Add doors to move between the rooms, not all rooms should be directly connected</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Implement player movement</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="collecting-items">Collecting items</h2>
+<ul>
+<li><strong>Scenario</strong>: Change room when the player goes through a door <br>
+    Given that there are no enemies alive in the current room <br>
+    When I go throw a door <br>
+    Then I can change the room I'm in <br></li>
+</ul>
+<h3 id="collecting-items">Collecting items</h3>
 <p><em>As a player, I want to collect and use the items I find while exploring the game map to be able to use them</em></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Acceptance Criteria</th>
-<th style="text-align: left;">Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Add various types of items inside each room</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Let the player collect the collectable items</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Implement a way to use these items, such as shooting</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="interact-with-entities">Interact with entities</h2>
+<ul>
+<li><strong>Scenario</strong>: Add items to the player inventory when he walks over one <br>
+    Given that there are items in the current room <br>
+    When I walk over an item <br>
+    Then I collect it<br>
+    And see it in my intentory<br></li>
+</ul>
+<h3 id="interact-with-entities">Interact with entities</h3>
 <p><em>As a player, I want to interact with other entities so that I can defeat enemies, for example</em></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Acceptance Criteria</th>
-<th style="text-align: left;">Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Generate other entities in the game map</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Entities must have limited life</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Bosses should have more life than simple enemies</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Let the player interact with entities, like shooting</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="beat-bosses">Beat bosses</h2>
+<ul>
+<li><strong>Scenario</strong>: When the player encounters entities, let him interact with them <br>
+    Given that there are entities alive<br>
+    When I enter a room with entities <br>
+    Then I can interact with them<br></li>
+</ul>
+<h3 id="beat-bosses">Beat bosses</h3>
 <p><em>As a player, I want to beat the bosses so that I can complete the game</em></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Acceptance Criteria</th>
-<th style="text-align: left;">Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Spawn bosses in some parts of the map</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Bosses should be more difficult to defeat</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">When each boss is defeated, the player has completed the game</td>
-<td style="text-align: left;"><span style="color:green">PASSED</span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="saving-and-loading">Saving and loading</h2>
+<ul>
+<li><strong>Scenario</strong>: When the player encounters bosses, let him fight with them <br>
+    Given that there are bosses alive<br>
+    When I enter a boss room <br>
+    Then I can use my items to fight and kill him<br>
+    And be able to complete the game<br></li>
+</ul>
+<h3 id="saving-and-loading">Saving and loading</h3>
 <p><em>As a player, I wan to save and load the game so that I can play the game when I want without losing savings</em></p>
+<ul>
+<li><strong>Scenario</strong>: Let the player loads saved games, if there are any <br>
+    Given that there are sagings available<br>
+    When I start the game I wat to be able to load a game <br>
+    Then I can resume playing without losing all the progress<br></li>
+</ul>
+<h2 id="system-test-report">System Test Report</h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Acceptance Criteria</th>
-<th style="text-align: left;">Result</th>
+<th style="text-align: left;">Summary</th>
+<th style="text-align: left;">Pre-Condition</th>
+<th style="text-align: left;">Post Condition</th>
+<th style="text-align: left;">Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Implement cloud game save</td>
+<td style="text-align: left;">View the inventory</td>
+<td style="text-align: left;">During the game, the player can see a <br> window with the items he collected</td>
+<td style="text-align: left;">A game is in progress</td>
+<td style="text-align: left;">The inventory is visible</td>
 <td style="text-align: left;"><span style="color:green">PASSED</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Implement loading game from cloud savings</td>
+<td style="text-align: left;">Move between rooms</td>
+<td style="text-align: left;">The player can move between rooms <br> using doors</td>
+<td style="text-align: left;">No enemies alive in current room <br> (doors are opened)</td>
+<td style="text-align: left;">The room displayed changes when player goes through a door</td>
 <td style="text-align: left;"><span style="color:green">PASSED</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Delete a saving if the player dies</td>
+<td style="text-align: left;">Collecting items</td>
+<td style="text-align: left;">The player may collect items by <br> walking over them</td>
+<td style="text-align: left;">There are items in the current room</td>
+<td style="text-align: left;">After collecting the item, <br>  it will be visible in the inventory</td>
 <td style="text-align: left;"><span style="color:green">PASSED</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Create new saving if the player starts a new game</td>
+<td style="text-align: left;">Interact with entities</td>
+<td style="text-align: left;">The player can interact with the entities he meets</td>
+<td style="text-align: left;">There are entities in the current room</td>
+<td style="text-align: left;">Only after beating all the enemies in a room, the player can change room</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Beat bosses</td>
+<td style="text-align: left;">The player can fight and beat all the bosses to complete the game</td>
+<td style="text-align: left;">There are still bosses alive</td>
+<td style="text-align: left;">Once all the bosses have been defeated, the game is completed</td>
+<td style="text-align: left;"><span style="color:green">PASSED</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Saving and loading</td>
+<td style="text-align: left;">In the main menu, the player may choose wether to load or save a game</td>
+<td style="text-align: left;">There are saved games</td>
+<td style="text-align: left;">All the progress previously made are saved and loaded correctly</td>
 <td style="text-align: left;"><span style="color:green">PASSED</span></td>
 </tr>
 </tbody>

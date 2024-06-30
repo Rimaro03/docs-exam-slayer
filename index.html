@@ -365,6 +365,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="How to play">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controls
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -392,6 +407,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Project structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -404,18 +434,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#programming-techniques-used" class="md-nav__link">
+  <a href="#design-patterns-used" class="md-nav__link">
     <span class="md-ellipsis">
-      Programming techniques used
+      Design patterns used
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#final-notes" class="md-nav__link">
+  <a href="#setup-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Final notes
+      Setup bucket
     </span>
   </a>
   
@@ -647,13 +677,35 @@ to achieve such goal you need to pass some exams, represented in the game as bos
 <h2 id="how-to-play">How to play</h2>
 <p>The game consists of <strong>four bosses</strong>, which represent four exams to pass. To complete the game, you need to pass each exam by finding and defeating the bosses. </p>
 <p>In addition, during the gameplay, you will have to deal with many enemies in order continue your adventure. To fight them, you can collect and use the items scattered in each room of the game map.</p>
+<h3 id="controls">Controls</h3>
+<ul>
+<li>Move:<ul>
+<li><code>W</code>: Move forward</li>
+<li><code>A</code>: Move left</li>
+<li><code>S</code>: Move backward</li>
+<li><code>D</code>: Move right</li>
+</ul>
+</li>
+<li>Attack:<ul>
+<li><code>Left arrow</code>: Shoot left</li>
+<li><code>Right arrow</code>: Shoot right</li>
+<li><code>Up arrow</code>: Shoot up</li>
+<li><code>Down arrow</code>: Shoot down</li>
+</ul>
+</li>
+<li>General:<ul>
+<li><code>ESC</code>: Pause the game</li>
+<li><code>Backspace</code>: when used in a save slot, it deletes the save </li>
+</ul>
+</li>
+</ul>
 <h2 id="installation-and-execution">Installation and execution</h2>
 <p>To download the game in <code>.jar</code> format, get the last release from <a href="https://github.com/UNI-projects-team/exam-slayer">here</a>.</p>
 <p>If you wish to compile the game yourself, make sure you have <code>git</code> and <code>maven</code> installed, the follow these instructions:
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/UNI-projects-team/exam-slayer
 <span class="nb">cd</span><span class="w"> </span>exam-slayer
 mvn<span class="w"> </span>clean<span class="w"> </span>compile<span class="w"> </span>assembly:single
-java<span class="w"> </span>-jar<span class="w"> </span>target/Progetto-edids-1.0.0-jar-with-dependencies.jar
+java<span class="w"> </span>-jar<span class="w"> </span>target/exam-slayer-1.0.0-jar-with-dependencies.jar
 </code></pre></div>
 The compilation process is automated with Maven, which create the <code>.jar</code> file in the <code>target/</code> directory inside the project root.</p>
 <h2 id="technologies-used">Technologies used</h2>
@@ -701,14 +753,43 @@ The compilation process is automated with Maven, which create the <code>.jar</co
 <h2 id="project-structure">Project structure</h2>
 <p>Here is how the game is structured:</p>
 <div class="grid">
+<div>
 <ul>
 <li><strong>Application</strong>: It's the frame where the game is displayed, launched by the main file</li>
 <li><strong>Game</strong>: The application launches one game</li>
 <li><strong>Level</strong>: The game may contain multiple level, in this case just one</li>
 <li><strong>Room</strong>: Each level contains multiple rooms, organized in the game map</li>
 <li><strong>GameObject</strong>: Each room contains some game objects, like items and enemies</li>
-<li><strong>Component</strong>: Each game object is composed by component, that allow it to do something (es. controllers, colliders)</li>
+<li><strong>Component</strong>: Each game object is composed by component, that allow it to do something (es. controllers, colliders)
+<br></li>
 </ul>
+<h3 id="exemple">Exemple</h3>
+<p>Every GameObject is created with a set of components, like a controller that allows it to move, or a collider that allows it to interact with other objects.
+If I want to create a player, I will contact the GameObject factory, which will create a GameObject with the components needed to move and shoot.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">createPlayer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GameObject</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createGameObject</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">createGameObject</span><span class="p">(</span>
+<span class="w">            </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="c1">// GameObject   </span>
+
+<span class="w">            </span><span class="c1">// All the components needed by the player</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">PlayerStats</span><span class="p">(</span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w"> </span>
+<span class="w">                </span><span class="p">.</span><span class="na">addItem</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Book</span><span class="p">(</span>
+<span class="w">                    </span><span class="s">&quot;DefaultPhysicsBook&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;resources/textures/touchable/book.png&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;resources/textures/stats/items/defaultItem.png&quot;</span>
+<span class="w">                </span><span class="p">)),</span><span class="w"> </span><span class="c1">// A builder pattern is used to create the player stats</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">AnimatedSpriteRenderer</span><span class="p">(</span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;resources/textures/characters/MainCharacter.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="c1">// The sprite renderer</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">PlayerController</span><span class="p">(</span><span class="n">player</span><span class="p">),</span><span class="w"> </span><span class="c1">// The controller that allows the player to move</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">PlayerShootingController</span><span class="p">(</span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="n">WeaponType</span><span class="p">.</span><span class="na">PhysicsBook</span><span class="p">),</span><span class="w"> </span><span class="c1">// The controller that allows the player to shoot</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">BoxCollider</span><span class="p">(</span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vec2</span><span class="p">(</span><span class="mf">1.2f</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span><span class="w"> </span><span class="c1">// The collider that allows the player to interact with other objects</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">PauseMenu</span><span class="p">(</span><span class="n">player</span><span class="p">),</span><span class="w"> </span><span class="c1">// The pause menu</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">BossKillCounter</span><span class="p">(</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="c1">// The counter that keeps track of the bosses killed</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
 <pre class="mermaid"><code>classDiagram
 
 Application --|&gt; Game
@@ -727,18 +808,16 @@ GameObject2 --|&gt; Component2</code></pre>
 <h2 id="world-generation">World generation</h2>
 <p>Each time a new game is created, a random map is generated; the map generation is handled with the <code>wave function collapse algorithm</code>. <br/> <u>Breaf explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
 For a more detailed explenation, refer to <a href="https://www.youtube.com/watch?v=2SuvO4Gi7uY&amp;t=31s&amp;pp=ygUXd2F2ZSBjb2xsYXBzZSBhbGdvcml0aG0%3D">this video</a>.</p>
-<h2 id="programming-techniques-used">Programming techniques used</h2>
+<h2 id="design-patterns-used">Design patterns used</h2>
 <ul>
 <li><strong>Singletons</strong>: used for classes such as <em>game</em>, which can't be instanciated more than once.</li>
 <li><strong>Controllers</strong>: used to handle user input in the game. Eg. movement controller, shooting controller.</li>
-<li><strong>Factory</strong>: used to create different types of game objects.</li>
-<li><strong>Observer</strong></li>
+<li><strong>Factory</strong>: used to create different types of game objects (eg. player, enemies, items).</li>
+<li><strong>Observer</strong> such as to notify when an item is picked up.</li>
+<li><strong>Builder pattern</strong>: used to create complex objects, like the inventory of the player.</li>
 </ul>
-<h2 id="final-notes">Final notes</h2>
-<ul>
-<li><strong>Class Diagram</strong><br/> The class diagram has been divided into three parts (main, level, items) so that its easier to read it. Keeping it united would have resulted in a too small diagram.
-&lt;!--TODO: Setup bucket&gt;</li>
-</ul>
+<h2 id="setup-bucket">Setup bucket</h2>
+<p>The game is set up in a bucket on Google Cloud, which allows to store the game data and the save files. You need to have the credentials to access the bucket, which are stored in the <code>./resources/bucket/bucket_key.json</code> file. The bucket is used to store the game data and the save files.</p>
 
 
 
