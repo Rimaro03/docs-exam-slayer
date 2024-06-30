@@ -16,7 +16,7 @@ Description:
 *As a player, I want to be able to move between the rooms so that I can explore the game map*
 
 - **Scenario**: Change room when the player goes through a door <br>
-    Given that there are no boss alive in the current room <br>
+    Given that there are no enemies alive in the current room <br>
     When I go throw a door <br>
     Then I can change the room I'm in <br>
 
@@ -59,9 +59,9 @@ Description:
 
 | Acceptance Criteria    | Summary                                                                   | Pre-Condition | Post Condition | Status                                  |
 | :--------------------- | :------------------------------------------------------------------------ | :------------ | :------------- | :-------------------------------------- |
-| View the inventory     | During the game, the player can see a <br> window with the items he collected | A game is in progress |  | <span style="color:green">PASSED</span> |
-| Move between rooms     |                                                                           |               |                | <span style="color:green">PASSED</span> |
-| Collecting items       |                                                                           |               |                | <span style="color:green">PASSED</span> |
-| Interact with entities |                                                                           |               |                | <span style="color:green">PASSED</span> |
-| Beat bosses            |                                                                           |               |                | <span style="color:green">PASSED</span> |
-| Saving and loading     |                                                                           |               |                | <span style="color:green">PASSED</span> |
+| View the inventory     | During the game, the player can see a <br> window with the items he collected | A game is in progress | The inventory is visible | <span style="color:green">PASSED</span> |
+| Move between rooms     | The player can move between rooms <br> using doors |  No enemies alive in current room <br> (doors are opened) | The room displayed changes when player goes through a door | <span style="color:green">PASSED</span> |
+| Collecting items       | The player may collect items by <br> walking over them | There are items in the current room | After collecting the item, <br>  it will be visible in the inventory | <span style="color:green">PASSED</span> |
+| Interact with entities | The player can interact with the entities he meets | There are entities in the current room | Only after beating all the enemies in a room, the player can change room  | <span style="color:green">PASSED</span> |
+| Beat bosses            | The player can fight and beat all the bosses to complete the game | There are still bosses alive | Once all the bosses have been defeated, the game is completed | <span style="color:green">PASSED</span> |
+| Saving and loading     | In the main menu, the player may choose wether to load or save a game | There are saved games | All the progress previously made are saved and loaded correctly | <span style="color:green">PASSED</span> |

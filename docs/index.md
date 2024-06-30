@@ -123,7 +123,7 @@ GameObject2 --|> Component2
 Each time a new game is created, a random map is generated; the map generation is handled with the `wave function collapse algorithm`. <br/> <u>Breaf explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
 For a more detailed explenation, refer to [this video](https://www.youtube.com/watch?v=2SuvO4Gi7uY&t=31s&pp=ygUXd2F2ZSBjb2xsYXBzZSBhbGdvcml0aG0%3D).
 
-## Programming techniques used
+## Design patterns used
 - **Singletons**: used for classes such as *game*, which can't be instanciated more than once.
 - **Controllers**: used to handle user input in the game. Eg. movement controller, shooting controller.
 - **Factory**: used to create different types of game objects (eg. player, enemies, items).
