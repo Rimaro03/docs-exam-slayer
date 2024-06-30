@@ -9,11 +9,10 @@ Full documentation of the project. Check out the source code [here](https://gith
 
 ## Brief description
 
-Exam Slayer is a 2D graphical adventure game, set in an imaginary dungeon. The goal of the game is to __graduate__: as in real life,
-to achieve such goal you need to pass some exams, represented in the game as boss to defeat.
+Exam Slayer is a 2D graphical adventure game, set in an imaginary dungeon. The player is living a __nightmare__ inside the UniPD fiera classrooms, the goal of the game is to wake up from this nightmare. To achieve such goal you need to pass some exams, represented in the game as boss to defeat.
 
 ## How to play
-The game consists of __four bosses__, which represent four exams to pass. To complete the game, you need to pass each exam by finding and defeating the bosses. 
+The game consists of __three bosses__, which represent four exams to pass. To complete the game, you need to pass each exam by finding and defeating the bosses. 
 
 In addition, during the gameplay, you will have to deal with many enemies in order continue your adventure. To fight them, you can collect and use the items scattered in each room of the game map.
 
@@ -30,7 +29,7 @@ In addition, during the gameplay, you will have to deal with many enemies in ord
     - `Down arrow`: Shoot down
 - General:
     - `ESC`: Pause the game
-    - `Backspace`: when used in a save slot, it deletes the save 
+    - `Backspace`: when used in the main menu save slot, it deletes the save
 
     
 
