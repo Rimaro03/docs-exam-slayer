@@ -1,21 +1,21 @@
 ## Component system
 <figure markdown="span">
-  ![Image title](../images/componentsystem.png){ width="800" }
+  ![Image title](../images/componentsystem.png)
 </figure>
 
 ## Core
 <figure markdown="span">
-  ![Image title](../images/core.png){ width="800" }
+  ![Image title](../images/core.png){ width="700" }
 </figure>
 
 ## Generation
 <figure markdown="span">
-  ![Image title](../images/generation.png){ width="1000" }
+  ![Image title](../images/generation.png){ width="800" }
 </figure>
 
 ## Items
 <figure markdown="span">
-  ![Image title](../images/items.png){ width="500" }
+  ![Image title](../images/items.png){ width="600" }
 </figure>
 
 ## Saving system
@@ -30,5 +30,5 @@
 
 ## Complete
 <figure markdown="span">
-  ![Image title](../images/complete.png){ width="800" }
+  ![Image title](../images/complete.png)
 </figure>
