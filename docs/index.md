@@ -8,7 +8,6 @@ summary: Project manual containing the game description, tenchnologies used, how
 Full documentation of the project. Check out the source code [here](https://github.com/UNI-projects-team/exam-slayer).
 
 ## Brief description
-
 Exam Slayer is a 2D graphical adventure game, set in an imaginary dungeon. The player is living a __nightmare__ inside the UniPD fiera classrooms, the goal of the game is to wake up from this nightmare. To achieve such goal you need to pass some exams, represented in the game as boss to defeat.
 
 ## How to play
@@ -29,7 +28,8 @@ In addition, during the gameplay, you will have to deal with many enemies in ord
     - `Down arrow`: Shoot down
 - General:
     - `ESC`: Pause the game
-    - `Backspace`: when used in the main menu save slot, it deletes the save
+    - `Backspace`: Deletes a save slot
+    - `Up/Down arrow`: Move throw the menu options
 
     
 
@@ -68,7 +68,7 @@ Here is how the game is structured:
 - **GameObject**: Each room contains some game objects, like items and enemies
 - **Component**: Each game object is composed by component, that allow it to do something (es. controllers, colliders)
 <br>
-### Exemple
+### Example
 
 Every GameObject is created with a set of components, like a controller that allows it to move, or a collider that allows it to interact with other objects.
 If I want to create a player, I will contact the GameObject factory, which will create a GameObject with the components needed to move and shoot.
@@ -119,15 +119,20 @@ GameObject2 --|> Component2
 
 
 ## World generation
-Each time a new game is created, a random map is generated; the map generation is handled with the `wave function collapse algorithm`. <br/> <u>Breaf explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
+Each time a new game is created, a random map is generated; the map generation is handled with the `wave function collapse algorithm`. <br/> <u>Brief explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
 For a more detailed explenation, refer to [this video](https://www.youtube.com/watch?v=2SuvO4Gi7uY&t=31s&pp=ygUXd2F2ZSBjb2xsYXBzZSBhbGdvcml0aG0%3D).
 
 ## Design patterns used
-- **Singletons**: used for classes such as *game*, which can't be instanciated more than once.
-- **Controllers**: used to handle user input in the game. Eg. movement controller, shooting controller.
-- **Factory**: used to create different types of game objects (eg. player, enemies, items).
-- **Observer** such as to notify when an item is picked up.
-- **Builder pattern**: used to create complex objects, like the inventory of the player.
+- **Singletons**: used for classes such as *game*, which can't be instanciated more than once.<br/>
+  Some classes which implement it: *Application, Game, Renderer, Input*.
+- **Controllers**: used to handle user input in the game. Eg. movement controller, shooting controller.<br/>
+  Some classes which implement it: *BoxCollider, DoorCollider, ItemCollider*.
+- **Factory**: used to create different types of game objects (eg. player, enemies, items).<br/>
+  Some classes which implement it: *GameObjectFactory*.
+- **Observer** such as to notify when an item is picked up.<br/>
+  Some classes which implement it: *ItemCollider*.
+- **Builder pattern**: used to create complex objects, like the inventory of the player.<br/>
+  Some classes which implement it: *PlayerStats*.
 
 ## Setup bucket
 The game is set up in a bucket on Google Cloud, which allows to store the game data and the save files. You need to have the credentials to access the bucket, which are stored in the `./resources/bucket/bucket_key.json` file. The bucket is used to store the game data and the save files.
