@@ -411,9 +411,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exemple" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
-      Exemple
+      Example
     </span>
   </a>
   
@@ -694,13 +694,14 @@
 </li>
 <li>General:<ul>
 <li><code>ESC</code>: Pause the game</li>
-<li><code>Backspace</code>: when used in the main menu save slot, it deletes the save</li>
+<li><code>Backspace</code>: Deletes a save slot</li>
+<li><code>Up/Down arrow</code>: Move throw the menu options</li>
 </ul>
 </li>
 </ul>
 <h2 id="installation-and-execution">Installation and execution</h2>
 <p>To download the game in <code>.jar</code> format, get the last release from <a href="https://github.com/UNI-projects-team/exam-slayer">here</a>.</p>
-<p>If you wish to compile the game yourself, make sure you have <code>git</code> and <code>maven</code> installed, the follow these instructions:
+<p>If you wish to compile the game yourself, make sure you have <code>git</code>, <code>maven</code> and <code>openjdk</code> 11 or greater installed, the follow these instructions:
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/UNI-projects-team/exam-slayer
 <span class="nb">cd</span><span class="w"> </span>exam-slayer
 mvn<span class="w"> </span>clean<span class="w"> </span>compile<span class="w"> </span>assembly:single
@@ -762,7 +763,7 @@ The compilation process is automated with Maven, which create the <code>.jar</co
 <li><strong>Component</strong>: Each game object is composed by component, that allow it to do something (es. controllers, colliders)
 <br></li>
 </ul>
-<h3 id="exemple">Exemple</h3>
+<h3 id="example">Example</h3>
 <p>Every GameObject is created with a set of components, like a controller that allows it to move, or a collider that allows it to interact with other objects.
 If I want to create a player, I will contact the GameObject factory, which will create a GameObject with the components needed to move and shoot.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">createPlayer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -805,15 +806,20 @@ GameObject2 --|&gt; Component1
 GameObject2 --|&gt; Component2</code></pre>
 </div>
 <h2 id="world-generation">World generation</h2>
-<p>Each time a new game is created, a random map is generated; the map generation is handled with the <code>wave function collapse algorithm</code>. <br/> <u>Breaf explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
+<p>Each time a new game is created, a random map is generated; the map generation is handled with the <code>wave function collapse algorithm</code>. <br/> <u>Brief explanation</u> of how it works: lets consider a grid that has to be filled following some rules. At first, the algorithm considers that every grid cells is potentially in every state permitted by the rules. In every loop, the algorithm sets the state for a specific cell, restricting the states the nearby cells could be by removing the invalid ones. The result is a grid filled following the rules.
 For a more detailed explenation, refer to <a href="https://www.youtube.com/watch?v=2SuvO4Gi7uY&amp;t=31s&amp;pp=ygUXd2F2ZSBjb2xsYXBzZSBhbGdvcml0aG0%3D">this video</a>.</p>
 <h2 id="design-patterns-used">Design patterns used</h2>
 <ul>
-<li><strong>Singletons</strong>: used for classes such as <em>game</em>, which can't be instanciated more than once.</li>
-<li><strong>Controllers</strong>: used to handle user input in the game. Eg. movement controller, shooting controller.</li>
-<li><strong>Factory</strong>: used to create different types of game objects (eg. player, enemies, items).</li>
-<li><strong>Observer</strong> such as to notify when an item is picked up.</li>
-<li><strong>Builder pattern</strong>: used to create complex objects, like the inventory of the player.</li>
+<li><strong>Singletons</strong>: used for classes such as <em>game</em>, which can't be instanciated more than once.<br/>
+  Some classes which implement it: <em>Application, Game, Renderer, Input</em>.</li>
+<li><strong>Controllers</strong>: used to handle user input in the game. Eg. movement controller, shooting controller.<br/>
+  Some classes which implement it: <em>BoxCollider, DoorCollider, ItemCollider</em>.</li>
+<li><strong>Factory</strong>: used to create different types of game objects (eg. player, enemies, items).<br/>
+  Some classes which implement it: <em>GameObjectFactory</em>.</li>
+<li><strong>Observer</strong> such as to notify when an item is picked up.<br/>
+  Some classes which implement it: <em>ItemCollider</em>.</li>
+<li><strong>Builder pattern</strong>: used to create complex objects, like the inventory of the player.<br/>
+  Some classes which implement it: <em>PlayerStats</em>.</li>
 </ul>
 <h2 id="setup-bucket">Setup bucket</h2>
 <p>The game is set up in a bucket on Google Cloud, which allows to store the game data and the save files. You need to have the credentials to access the bucket, which are stored in the <code>./resources/bucket/bucket_key.json</code> file. The bucket is used to store the game data and the save files.</p>
