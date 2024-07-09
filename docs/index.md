@@ -36,7 +36,7 @@ In addition, during the gameplay, you will have to deal with many enemies in ord
 ## Installation and execution
 To download the game in `.jar` format, get the last release from [here](https://github.com/UNI-projects-team/exam-slayer).
 
-If you wish to compile the game yourself, make sure you have `git` and `maven` installed, the follow these instructions:
+If you wish to compile the game yourself, make sure you have `git`, `maven` and `openjdk` 11 or greater installed, the follow these instructions:
 ```bash
 git clone https://github.com/UNI-projects-team/exam-slayer
 cd exam-slayer
